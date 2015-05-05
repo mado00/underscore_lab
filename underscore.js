@@ -1,5 +1,5 @@
 
-//var _. = function() {
+var _ = function() {
 	//base class
 }
 
@@ -14,7 +14,6 @@ _.average = function(array) {
 
 //  contains - returns true is a given value is present in an array
 _.contains= function(array, n) {
-	
 	for (var i = 0; i < array.length; i++) {
 		if (array[i] === n) {
 		return true;	
@@ -120,13 +119,59 @@ _.indexOf = function(array, n) {
 }
 
 
-// pluck - extracts a list of property values and returns them in an array.
+// pluck - extracts a list of property values and returns them in an array. Using forEach with element
 _.pluck = function(list, property) {
-	var array = [];
+	var array = []
 	list.forEach(function(elm) {
 		array.push(elm.name);
 	}); 
-	return array;		
+	return array;
+}
+
+//	each - iterates over an array and calls a given function with each element 
+_.each = function(array) {
+	array.forEach(function(elm) {
+	});
+	return array;	
+}
+
+// compact - returns a new array with all provided   values removed
+_.compact = function(array) {
+	var result = [];
+	array.forEach(function(elm) {
+		if (elm !== "undefined") {
+			result.push(elm);
+		}
+	});
+	return result;
+}
+
+// map - returns a new array of values produced by running each element of an array through a given function
+_.map = function(array, func) {
+	var result = [];
+	array.forEach(function(elm) {
+		result.push(func(elm));
+	});
+	return result; 
+}
+
+/*_.map([1, 2, 3], function(num){ return num * 3; });
+=> [3, 6, 9]
+
+_.map(["dogs", "before", "cats"], function(str){ return str.toUpperCase(); });
+=> ["DOGS", "BEFORE", "CATS"]
+*/
+
+
+// filter - Looks through each value in the list, returning an array of all the values that pass a truth test
+_.filter = function(array, func) {
+var result = [];
+	array.forEach(function(elm) {
+		if (func(elm)) {
+			result.push(elm);	
+		}
+	});
+	return result; 
 }
 
 
